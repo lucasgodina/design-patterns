@@ -1,12 +1,8 @@
 # Ventajas de aplicar este patrón:
-# 1. Desacoplamiento: El control remoto (Invoker) no necesita conocer los detalles
-#  de cómo se ejecuta un comando. Solo interactúa con la interfaz Command.
-# 2. Extensibilidad: Se pueden añadir nuevos comandos para controlar otros dispositivos
-#  (como un equipo de sonido o un ventilador) sin modificar la clase ControlRemoto.
-# 3. Flexibilidad: Los comandos pueden ser almacenados, encolados o revertidos, lo que
-#  permite implementar funcionalidades avanzadas como "deshacer".
-# 4. Encapsulación: Cada comando encapsula una solicitud completa, incluyendo el método
-#  a llamar y los parámetros necesarios, en un único objeto.
+# 1. Desacoplamiento: El control remoto (Invoker) no necesita conocer los detalles de cómo se ejecuta un comando. Solo interactúa con la interfaz Command.
+# 2. Extensibilidad: Se pueden añadir nuevos comandos para controlar otros dispositivos (como un equipo de sonido o un ventilador) sin modificar la clase ControlRemoto.
+# 3. Flexibilidad: Los comandos pueden ser almacenados, encolados o revertidos, lo que permite implementar funcionalidades avanzadas como "deshacer".
+# 4. Encapsulación: Cada comando encapsula una solicitud completa, incluyendo el método a llamar y los parámetros necesarios, en un único objeto.
 
 from abc import ABC, abstractmethod
 
