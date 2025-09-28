@@ -1,5 +1,10 @@
 package behavioral.strategy.java;
 
+// El principal problema de este enfoque es que la clase CalculadoraEnvio
+// está fuertemente acoplada a las diferentes estrategias de cálculo de costos.
+// Cada vez que se añade un nuevo transportista, hay que modificar esta clase,
+// lo que viola el Principio Abierto/Cerrado (OCP) de SOLID.
+
 // La clase que contiene el contexto y toda la lógica condicional
 class CalculadoraEnvio {
     public static final String FEDEX = "FedEx";
