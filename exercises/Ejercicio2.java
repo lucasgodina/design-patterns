@@ -1,45 +1,45 @@
 public class Ejercicio2 {
 
     public static void main(String[] args) {
-        ProductFactory factory = new ProductFactory();
+        FabricaProductos fabrica = new FabricaProductos();
 
-        Product laptop = factory.createProduct("laptop", "Dell XPS", 1500.0);
-        Product phone = factory.createProduct("phone", "iPhone 14", 999.0);
-        Product tablet = factory.createProduct("tablet", "iPad Pro", 1200.0);
+        Producto laptop = fabrica.crearProducto("laptop", "Dell XPS", 1500.0);
+        Producto telefono = fabrica.crearProducto("telefono", "iPhone 14", 999.0);
+        Producto tableta = fabrica.crearProducto("tableta", "iPad Pro", 1200.0);
 
-        laptop.displayInfo();
-        phone.displayInfo();
-        tablet.displayInfo();
+        laptop.mostrarInformacion();
+        telefono.mostrarInformacion();
+        tableta.mostrarInformacion();
     }
 }
 
-class ProductFactory {
-    public Product createProduct(String type, String name, double price) {
-        if (type.equals("laptop")) {
-            return new Product("Laptop", name, price, "Computadora portátil");
-        } else if (type.equals("phone")) {
-            return new Product("Teléfono", name, price, "Dispositivo móvil");
-        } else if (type.equals("tablet")) {
-            return new Product("Tablet", name, price, "Dispositivo táctil");
+class FabricaProductos {
+    public Producto crearProducto(String tipo, String nombre, double precio) {
+        if (tipo.equals("laptop")) {
+            return new Producto("Laptop", nombre, precio, "Computadora portátil");
+        } else if (tipo.equals("telefono")) {
+            return new Producto("Teléfono", nombre, precio, "Dispositivo móvil");
+        } else if (tipo.equals("tableta")) {
+            return new Producto("Tableta", nombre, precio, "Dispositivo táctil");
         }
         return null;
     }
 }
 
-class Product {
-    private String category;
-    private String name;
-    private double price;
-    private String description;
+class Producto {
+    private String categoria;
+    private String nombre;
+    private double precio;
+    private String descripcion;
 
-    public Product(String category, String name, double price, String description) {
-        this.category = category;
-        this.name = name;
-        this.price = price;
-        this.description = description;
+    public Producto(String categoria, String nombre, double precio, String descripcion) {
+        this.categoria = categoria;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.descripcion = descripcion;
     }
 
-    public void displayInfo() {
-        System.out.println(category + ": " + name + " - $" + price + " (" + description + ")");
+    public void mostrarInformacion() {
+        System.out.println(categoria + ": " + nombre + " - $" + precio + " (" + descripcion + ")");
     }
 }

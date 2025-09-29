@@ -1,97 +1,97 @@
 public class Ejercicio9 {
 
     public static void main(String[] args) {
-        Coffee simpleCoffee = new SimpleCoffee();
-        System.out.println(simpleCoffee.getDescription() + " - $" + simpleCoffee.getCost());
+        Cafe cafeSimple = new CafeSimple();
+        System.out.println(cafeSimple.obtenerDescripcion() + " - $" + cafeSimple.obtenerCosto());
 
-        Coffee coffeeWithMilk = new SimpleCoffee();
-        coffeeWithMilk = addMilk(coffeeWithMilk);
-        System.out.println(coffeeWithMilk.getDescription() + " - $" + coffeeWithMilk.getCost());
+        Cafe cafeConLeche = new CafeSimple();
+        cafeConLeche = agregarLeche(cafeConLeche);
+        System.out.println(cafeConLeche.obtenerDescripcion() + " - $" + cafeConLeche.obtenerCosto());
 
-        Coffee coffeeWithSugar = new SimpleCoffee();
-        coffeeWithSugar = addSugar(coffeeWithSugar);
-        System.out.println(coffeeWithSugar.getDescription() + " - $" + coffeeWithSugar.getCost());
+        Cafe cafeConAzucar = new CafeSimple();
+        cafeConAzucar = agregarAzucar(cafeConAzucar);
+        System.out.println(cafeConAzucar.obtenerDescripcion() + " - $" + cafeConAzucar.obtenerCosto());
 
-        Coffee deluxeCoffee = new SimpleCoffee();
-        deluxeCoffee = addMilk(deluxeCoffee);
-        deluxeCoffee = addSugar(deluxeCoffee);
-        deluxeCoffee = addChocolate(deluxeCoffee);
-        System.out.println(deluxeCoffee.getDescription() + " - $" + deluxeCoffee.getCost());
+        Cafe cafeDeluxe = new CafeSimple();
+        cafeDeluxe = agregarLeche(cafeDeluxe);
+        cafeDeluxe = agregarAzucar(cafeDeluxe);
+        cafeDeluxe = agregarChocolate(cafeDeluxe);
+        System.out.println(cafeDeluxe.obtenerDescripcion() + " - $" + cafeDeluxe.obtenerCosto());
     }
 
-    public static Coffee addMilk(Coffee coffee) {
-        return new CoffeeWithMilk(coffee);
+    public static Cafe agregarLeche(Cafe cafe) {
+        return new CafeConLeche(cafe);
     }
 
-    public static Coffee addSugar(Coffee coffee) {
-        return new CoffeeWithSugar(coffee);
+    public static Cafe agregarAzucar(Cafe cafe) {
+        return new CafeConAzucar(cafe);
     }
 
-    public static Coffee addChocolate(Coffee coffee) {
-        return new CoffeeWithChocolate(coffee);
+    public static Cafe agregarChocolate(Cafe cafe) {
+        return new CafeConChocolate(cafe);
     }
 }
 
-interface Coffee {
-    String getDescription();
+interface Cafe {
+    String obtenerDescripcion();
 
-    double getCost();
+    double obtenerCosto();
 }
 
-class SimpleCoffee implements Coffee {
-    public String getDescription() {
+class CafeSimple implements Cafe {
+    public String obtenerDescripcion() {
         return "Café simple";
     }
 
-    public double getCost() {
+    public double obtenerCosto() {
         return 2.0;
     }
 }
 
-class CoffeeWithMilk implements Coffee {
-    private Coffee coffee;
+class CafeConLeche implements Cafe {
+    private Cafe cafe;
 
-    public CoffeeWithMilk(Coffee coffee) {
-        this.coffee = coffee;
+    public CafeConLeche(Cafe cafe) {
+        this.cafe = cafe;
     }
 
-    public String getDescription() {
-        return coffee.getDescription() + " + Leche";
+    public String obtenerDescripcion() {
+        return cafe.obtenerDescripcion() + " + Leche";
     }
 
-    public double getCost() {
-        return coffee.getCost() + 0.5;
-    }
-}
-
-class CoffeeWithSugar implements Coffee {
-    private Coffee coffee;
-
-    public CoffeeWithSugar(Coffee coffee) {
-        this.coffee = coffee;
-    }
-
-    public String getDescription() {
-        return coffee.getDescription() + " + Azúcar";
-    }
-
-    public double getCost() {
-        return coffee.getCost() + 0.25;
+    public double obtenerCosto() {
+        return cafe.obtenerCosto() + 0.5;
     }
 }
 
-class CoffeeWithChocolate implements Coffee {
-    private Coffee coffee;
+class CafeConAzucar implements Cafe {
+    private Cafe cafe;
 
-    public CoffeeWithChocolate(Coffee coffee) {
-        this.coffee = coffee;
+    public CafeConAzucar(Cafe cafe) {
+        this.cafe = cafe;
     }
 
-    public String getDescription() {
-        return coffee.getDescription() + " + Chocolate";
+    public String obtenerDescripcion() {
+        return cafe.obtenerDescripcion() + " + Azúcar";
     }
 
-    public double getCost() {
-        return coffee.getCost() + 0.75;
+    public double obtenerCosto() {
+        return cafe.obtenerCosto() + 0.25;
+    }
+}
+
+class CafeConChocolate implements Cafe {
+    private Cafe cafe;
+
+    public CafeConChocolate(Cafe cafe) {
+        this.cafe = cafe;
+    }
+
+    public String obtenerDescripcion() {
+        return cafe.obtenerDescripcion() + " + Chocolate";
+    }
+
+    public double obtenerCosto() {
+        return cafe.obtenerCosto() + 0.75;
     }
 }

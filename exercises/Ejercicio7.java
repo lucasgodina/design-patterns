@@ -1,73 +1,73 @@
 public class Ejercicio7 {
 
     public static void main(String[] args) {
-        ShoppingCart cart = new ShoppingCart();
+        CarritoCompras carrito = new CarritoCompras();
 
-        cart.addItem("Laptop", 1500.0);
-        cart.addItem("Mouse", 25.0);
-        cart.addItem("Teclado", 75.0);
+        carrito.agregarArticulo("Laptop", 1500.0);
+        carrito.agregarArticulo("Mouse", 25.0);
+        carrito.agregarArticulo("Teclado", 75.0);
 
-        PaymentProcessor processor = new PaymentProcessor();
+        ProcesadorPagos procesador = new ProcesadorPagos();
 
-        processor.processPayment(cart, "credit");
-        processor.processPayment(cart, "paypal");
-        processor.processPayment(cart, "crypto");
+        procesador.procesarPago(carrito, "tarjeta");
+        procesador.procesarPago(carrito, "paypal");
+        procesador.procesarPago(carrito, "cripto");
     }
 }
 
-class ShoppingCart {
-    private java.util.List<Item> items = new java.util.ArrayList<>();
+class CarritoCompras {
+    private java.util.List<Articulo> articulos = new java.util.ArrayList<>();
 
-    public void addItem(String name, double price) {
-        items.add(new Item(name, price));
+    public void agregarArticulo(String nombre, double precio) {
+        articulos.add(new Articulo(nombre, precio));
     }
 
-    public double getTotal() {
-        return items.stream().mapToDouble(Item::getPrice).sum();
+    public double obtenerTotal() {
+        return articulos.stream().mapToDouble(Articulo::obtenerPrecio).sum();
     }
 
-    public void displayItems() {
-        for (Item item : items) {
-            System.out.println("- " + item.getName() + ": $" + item.getPrice());
+    public void mostrarArticulos() {
+        for (Articulo articulo : articulos) {
+            System.out.println("- " + articulo.obtenerNombre() + ": $" + articulo.obtenerPrecio());
         }
     }
 }
 
-class Item {
-    private String name;
-    private double price;
+class Articulo {
+    private String nombre;
+    private double precio;
 
-    public Item(String name, double price) {
-        this.name = name;
-        this.price = price;
+    public Articulo(String nombre, double precio) {
+        this.nombre = nombre;
+        this.precio = precio;
     }
 
-    public String getName() {
-        return name;
+    public String obtenerNombre() {
+        return nombre;
     }
 
-    public double getPrice() {
-        return price;
+    public double obtenerPrecio() {
+        return precio;
     }
 }
 
-class PaymentProcessor {
-    public void processPayment(ShoppingCart cart, String method) {
-        double total = cart.getTotal();
+class ProcesadorPagos {
+    public void procesarPago(CarritoCompras carrito, String metodo) {
+        double total = carrito.obtenerTotal();
 
-        if (method.equals("credit")) {
+        if (metodo.equals("tarjeta")) {
             System.out.println("Procesando pago con tarjeta de crédito por $" + total);
             System.out.println("Validando número de tarjeta...");
             System.out.println("Verificando fondos...");
             System.out.println("Pago aprobado");
-        } else if (method.equals("paypal")) {
+        } else if (metodo.equals("paypal")) {
             System.out.println("Procesando pago con PayPal por $" + total);
             System.out.println("Redirigiendo a PayPal...");
             System.out.println("Autenticación exitosa");
             System.out.println("Pago completado");
-        } else if (method.equals("crypto")) {
+        } else if (metodo.equals("cripto")) {
             System.out.println("Procesando pago con criptomonedas por $" + total);
-            System.out.println("Generando dirección de wallet...");
+            System.out.println("Generando dirección de billetera...");
             System.out.println("Confirmando transacción en blockchain...");
             System.out.println("Pago verificado");
         }

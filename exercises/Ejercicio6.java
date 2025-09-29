@@ -1,72 +1,72 @@
 public class Ejercicio6 {
 
     public static void main(String[] args) {
-        NewsAgency agency = new NewsAgency();
+        AgenciaNoticias agencia = new AgenciaNoticias();
 
-        NewsChannel channel1 = new NewsChannel("Canal 1");
-        NewsChannel channel2 = new NewsChannel("Canal 2");
-        Newspaper newspaper = new Newspaper("Diario Nacional");
+        CanalNoticias canal1 = new CanalNoticias("Canal 1");
+        CanalNoticias canal2 = new CanalNoticias("Canal 2");
+        Periodico periodico = new Periodico("Diario Nacional");
 
-        agency.addSubscriber(channel1);
-        agency.addSubscriber(channel2);
-        agency.addSubscriber(newspaper);
+        agencia.agregarSuscriptor(canal1);
+        agencia.agregarSuscriptor(canal2);
+        agencia.agregarSuscriptor(periodico);
 
-        agency.publishNews("Gran descubrimiento científico");
+        agencia.publicarNoticia("Gran descubrimiento científico");
 
-        agency.removeSubscriber(channel2);
+        agencia.removerSuscriptor(canal2);
 
-        agency.publishNews("Nuevas medidas económicas");
+        agencia.publicarNoticia("Nuevas medidas económicas");
     }
 }
 
-class NewsAgency {
-    private java.util.List<NewsSubscriber> subscribers = new java.util.ArrayList<>();
-    private String latestNews;
+class AgenciaNoticias {
+    private java.util.List<SuscriptorNoticias> suscriptores = new java.util.ArrayList<>();
+    private String ultimaNoticia;
 
-    public void addSubscriber(NewsSubscriber subscriber) {
-        subscribers.add(subscriber);
+    public void agregarSuscriptor(SuscriptorNoticias suscriptor) {
+        suscriptores.add(suscriptor);
     }
 
-    public void removeSubscriber(NewsSubscriber subscriber) {
-        subscribers.remove(subscriber);
+    public void removerSuscriptor(SuscriptorNoticias suscriptor) {
+        suscriptores.remove(suscriptor);
     }
 
-    public void publishNews(String news) {
-        this.latestNews = news;
-        notifyAllSubscribers();
+    public void publicarNoticia(String noticia) {
+        this.ultimaNoticia = noticia;
+        notificarTodosSuscriptores();
     }
 
-    private void notifyAllSubscribers() {
-        for (NewsSubscriber subscriber : subscribers) {
-            subscriber.update(latestNews);
+    private void notificarTodosSuscriptores() {
+        for (SuscriptorNoticias suscriptor : suscriptores) {
+            suscriptor.actualizar(ultimaNoticia);
         }
     }
 }
 
-interface NewsSubscriber {
-    void update(String news);
+interface SuscriptorNoticias {
+    void actualizar(String noticia);
 }
 
-class NewsChannel implements NewsSubscriber {
-    private String name;
+class CanalNoticias implements SuscriptorNoticias {
+    private String nombre;
 
-    public NewsChannel(String name) {
-        this.name = name;
+    public CanalNoticias(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void update(String news) {
-        System.out.println(name + " reporta: " + news);
+    public void actualizar(String noticia) {
+        System.out.println(nombre + " reporta: " + noticia);
     }
 }
 
-class Newspaper implements NewsSubscriber {
-    private String name;
+class Periodico implements SuscriptorNoticias {
+    private String nombre;
 
-    public Newspaper(String name) {
-        this.name = name;
+    public Periodico(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void update(String news) {
-        System.out.println(name + " publica: " + news);
+    public void actualizar(String noticia) {
+        System.out.println(nombre + " publica: " + noticia);
     }
 }

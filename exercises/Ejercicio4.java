@@ -1,29 +1,29 @@
 public class Ejercicio4 {
 
     public static void main(String[] args) {
-        MediaPlayer player = new MediaPlayer();
+        ReproductorMedia reproductor = new ReproductorMedia();
 
-        player.play("song.mp3");
-        player.play("movie.mp4");
-        player.play("audio.wav");
-        player.play("video.avi");
+        reproductor.reproducir("cancion.mp3");
+        reproductor.reproducir("pelicula.mp4");
+        reproductor.reproducir("audio.wav");
+        reproductor.reproducir("video.avi");
     }
 }
 
-class MediaPlayer {
-    public void play(String filename) {
-        String extension = filename.substring(filename.lastIndexOf('.') + 1);
+class ReproductorMedia {
+    public void reproducir(String nombreArchivo) {
+        String extension = nombreArchivo.substring(nombreArchivo.lastIndexOf('.') + 1);
 
         if (extension.equals("mp3")) {
-            System.out.println("Reproduciendo MP3: " + filename);
+            System.out.println("Reproduciendo MP3: " + nombreArchivo);
         } else if (extension.equals("wav")) {
-            System.out.println("Reproduciendo WAV: " + filename);
+            System.out.println("Reproduciendo WAV: " + nombreArchivo);
         } else {
-            AdvancedMediaPlayer advancedPlayer = new AdvancedMediaPlayer();
+            ReproductorMediaAvanzado reproductorAvanzado = new ReproductorMediaAvanzado();
             if (extension.equals("mp4")) {
-                advancedPlayer.playMp4(filename);
+                reproductorAvanzado.reproducirMp4(nombreArchivo);
             } else if (extension.equals("avi")) {
-                advancedPlayer.playAvi(filename);
+                reproductorAvanzado.reproducirAvi(nombreArchivo);
             } else {
                 System.out.println("Formato " + extension + " no soportado");
             }
@@ -31,12 +31,12 @@ class MediaPlayer {
     }
 }
 
-class AdvancedMediaPlayer {
-    public void playMp4(String filename) {
-        System.out.println("Reproduciendo MP4: " + filename);
+class ReproductorMediaAvanzado {
+    public void reproducirMp4(String nombreArchivo) {
+        System.out.println("Reproduciendo MP4: " + nombreArchivo);
     }
 
-    public void playAvi(String filename) {
-        System.out.println("Reproduciendo AVI: " + filename);
+    public void reproducirAvi(String nombreArchivo) {
+        System.out.println("Reproduciendo AVI: " + nombreArchivo);
     }
 }

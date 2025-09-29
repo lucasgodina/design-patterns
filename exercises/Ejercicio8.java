@@ -1,94 +1,94 @@
 public class Ejercicio8 {
 
     public static void main(String[] args) {
-        RemoteControl remote = new RemoteControl();
+        ControlRemoto control = new ControlRemoto();
 
-        remote.setCommand("turn on light");
-        remote.executeCommand();
+        control.establecerComando("encender luz");
+        control.ejecutarComando();
 
-        remote.setCommand("turn off light");
-        remote.executeCommand();
+        control.establecerComando("apagar luz");
+        control.ejecutarComando();
 
-        remote.setCommand("turn on fan");
-        remote.executeCommand();
+        control.establecerComando("encender ventilador");
+        control.ejecutarComando();
 
-        remote.setCommand("set fan speed high");
-        remote.executeCommand();
+        control.establecerComando("velocidad ventilador alta");
+        control.ejecutarComando();
 
-        remote.setCommand("turn on stereo");
-        remote.executeCommand();
+        control.establecerComando("encender estereo");
+        control.ejecutarComando();
 
-        remote.setCommand("set volume 50");
-        remote.executeCommand();
+        control.establecerComando("volumen 50");
+        control.ejecutarComando();
     }
 }
 
-class RemoteControl {
-    private String currentCommand;
-    private Light light = new Light();
-    private Fan fan = new Fan();
-    private Stereo stereo = new Stereo();
+class ControlRemoto {
+    private String comandoActual;
+    private Luz luz = new Luz();
+    private Ventilador ventilador = new Ventilador();
+    private Estereo estereo = new Estereo();
 
-    public void setCommand(String command) {
-        this.currentCommand = command;
+    public void establecerComando(String comando) {
+        this.comandoActual = comando;
     }
 
-    public void executeCommand() {
-        if (currentCommand.equals("turn on light")) {
-            light.turnOn();
-        } else if (currentCommand.equals("turn off light")) {
-            light.turnOff();
-        } else if (currentCommand.equals("turn on fan")) {
-            fan.turnOn();
-        } else if (currentCommand.equals("turn off fan")) {
-            fan.turnOff();
-        } else if (currentCommand.equals("set fan speed high")) {
-            fan.setSpeed("high");
-        } else if (currentCommand.equals("turn on stereo")) {
-            stereo.turnOn();
-        } else if (currentCommand.equals("turn off stereo")) {
-            stereo.turnOff();
-        } else if (currentCommand.startsWith("set volume")) {
-            int volume = Integer.parseInt(currentCommand.split(" ")[2]);
-            stereo.setVolume(volume);
+    public void ejecutarComando() {
+        if (comandoActual.equals("encender luz")) {
+            luz.encender();
+        } else if (comandoActual.equals("apagar luz")) {
+            luz.apagar();
+        } else if (comandoActual.equals("encender ventilador")) {
+            ventilador.encender();
+        } else if (comandoActual.equals("apagar ventilador")) {
+            ventilador.apagar();
+        } else if (comandoActual.equals("velocidad ventilador alta")) {
+            ventilador.establecerVelocidad("alta");
+        } else if (comandoActual.equals("encender estereo")) {
+            estereo.encender();
+        } else if (comandoActual.equals("apagar estereo")) {
+            estereo.apagar();
+        } else if (comandoActual.startsWith("volumen")) {
+            int volumen = Integer.parseInt(comandoActual.split(" ")[1]);
+            estereo.establecerVolumen(volumen);
         }
     }
 }
 
-class Light {
-    public void turnOn() {
+class Luz {
+    public void encender() {
         System.out.println("Luz encendida");
     }
 
-    public void turnOff() {
+    public void apagar() {
         System.out.println("Luz apagada");
     }
 }
 
-class Fan {
-    public void turnOn() {
+class Ventilador {
+    public void encender() {
         System.out.println("Ventilador encendido");
     }
 
-    public void turnOff() {
+    public void apagar() {
         System.out.println("Ventilador apagado");
     }
 
-    public void setSpeed(String speed) {
-        System.out.println("Velocidad del ventilador: " + speed);
+    public void establecerVelocidad(String velocidad) {
+        System.out.println("Velocidad del ventilador: " + velocidad);
     }
 }
 
-class Stereo {
-    public void turnOn() {
+class Estereo {
+    public void encender() {
         System.out.println("Estéreo encendido");
     }
 
-    public void turnOff() {
+    public void apagar() {
         System.out.println("Estéreo apagado");
     }
 
-    public void setVolume(int volume) {
-        System.out.println("Volumen: " + volume);
+    public void establecerVolumen(int volumen) {
+        System.out.println("Volumen: " + volumen);
     }
 }

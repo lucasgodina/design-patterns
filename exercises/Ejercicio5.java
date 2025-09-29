@@ -1,57 +1,57 @@
 public class Ejercicio5 {
 
     public static void main(String[] args) {
-        Circle circle = new Circle();
-        Rectangle rectangle = new Rectangle();
+        Circulo circulo = new Circulo();
+        Rectangulo rectangulo = new Rectangulo();
 
-        Group mainGroup = new Group();
-        mainGroup.add(circle);
-        mainGroup.add(rectangle);
+        Grupo grupoPrincipal = new Grupo();
+        grupoPrincipal.agregar(circulo);
+        grupoPrincipal.agregar(rectangulo);
 
-        Group subGroup = new Group();
-        subGroup.add(new Circle());
-        subGroup.add(new Rectangle());
+        Grupo subGrupo = new Grupo();
+        subGrupo.agregar(new Circulo());
+        subGrupo.agregar(new Rectangulo());
 
-        mainGroup.add(subGroup);
+        grupoPrincipal.agregar(subGrupo);
 
-        mainGroup.draw();
+        grupoPrincipal.dibujar();
     }
 }
 
-interface Drawable {
-    void draw();
+interface Dibujable {
+    void dibujar();
 }
 
-class Circle implements Drawable {
-    public void draw() {
+class Circulo implements Dibujable {
+    public void dibujar() {
         System.out.println("Dibujando un círculo");
     }
 }
 
-class Rectangle implements Drawable {
-    public void draw() {
+class Rectangulo implements Dibujable {
+    public void dibujar() {
         System.out.println("Dibujando un rectángulo");
     }
 }
 
-abstract class Shape implements Drawable {
+abstract class Forma implements Dibujable {
 }
 
-class Group extends Shape {
-    private java.util.List<Drawable> shapes = new java.util.ArrayList<>();
+class Grupo extends Forma {
+    private java.util.List<Dibujable> formas = new java.util.ArrayList<>();
 
-    public void add(Drawable shape) {
-        shapes.add(shape);
+    public void agregar(Dibujable forma) {
+        formas.add(forma);
     }
 
-    public void remove(Drawable shape) {
-        shapes.remove(shape);
+    public void remover(Dibujable forma) {
+        formas.remove(forma);
     }
 
-    public void draw() {
+    public void dibujar() {
         System.out.println("Dibujando grupo:");
-        for (Drawable shape : shapes) {
-            shape.draw();
+        for (Dibujable forma : formas) {
+            forma.dibujar();
         }
     }
 }

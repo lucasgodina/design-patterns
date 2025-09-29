@@ -1,81 +1,81 @@
 public class Ejercicio3 {
 
     public static void main(String[] args) {
-        Computer computer = new Computer();
+        Computadora computadora = new Computadora();
 
-        computer.setProcessor("Intel i7");
-        computer.setMemory("16GB RAM");
-        computer.setStorage("1TB SSD");
-        computer.setGraphicsCard("NVIDIA RTX 3080");
-        computer.setMotherboard("ASUS ROG");
-        computer.setPowerSupply("750W");
-        computer.setCoolingSystem("Liquid Cooling");
+        computadora.establecerProcesador("Intel i7");
+        computadora.establecerMemoria("16GB RAM");
+        computadora.establecerAlmacenamiento("1TB SSD");
+        computadora.establecerTarjetaGrafica("NVIDIA RTX 3080");
+        computadora.establecerPlacaMadre("ASUS ROG");
+        computadora.establecerFuente("750W");
+        computadora.establecerRefrigeracion("Refrigeración Líquida");
 
-        computer.displaySpecs();
+        computadora.mostrarEspecificaciones();
 
-        Computer gaming = new Computer();
-        gaming.setProcessor("AMD Ryzen 9");
-        gaming.setMemory("32GB RAM");
-        gaming.setStorage("2TB SSD");
-        gaming.setGraphicsCard("NVIDIA RTX 4090");
+        Computadora gaming = new Computadora();
+        gaming.establecerProcesador("AMD Ryzen 9");
+        gaming.establecerMemoria("32GB RAM");
+        gaming.establecerAlmacenamiento("2TB SSD");
+        gaming.establecerTarjetaGrafica("NVIDIA RTX 4090");
 
-        gaming.displaySpecs();
+        gaming.mostrarEspecificaciones();
     }
 }
 
-class Computer {
-    private String processor;
-    private String memory;
-    private String storage;
-    private String graphicsCard;
-    private String motherboard;
-    private String powerSupply;
-    private String coolingSystem;
+class Computadora {
+    private String procesador;
+    private String memoria;
+    private String almacenamiento;
+    private String tarjetaGrafica;
+    private String placaMadre;
+    private String fuente;
+    private String refrigeracion;
 
-    public void setProcessor(String processor) {
-        this.processor = processor;
+    public void establecerProcesador(String procesador) {
+        this.procesador = procesador;
     }
 
-    public void setMemory(String memory) {
-        this.memory = memory;
+    public void establecerMemoria(String memoria) {
+        this.memoria = memoria;
     }
 
-    public void setStorage(String storage) {
-        this.storage = storage;
+    public void establecerAlmacenamiento(String almacenamiento) {
+        this.almacenamiento = almacenamiento;
     }
 
-    public void setGraphicsCard(String graphicsCard) {
-        this.graphicsCard = graphicsCard;
+    public void establecerTarjetaGrafica(String tarjetaGrafica) {
+        this.tarjetaGrafica = tarjetaGrafica;
     }
 
-    public void setMotherboard(String motherboard) {
-        this.motherboard = motherboard;
+    public void establecerPlacaMadre(String placaMadre) {
+        this.placaMadre = placaMadre;
     }
 
-    public void setPowerSupply(String powerSupply) {
-        this.powerSupply = powerSupply;
+    public void establecerFuente(String fuente) {
+        this.fuente = fuente;
     }
 
-    public void setCoolingSystem(String coolingSystem) {
-        this.coolingSystem = coolingSystem;
+    public void establecerRefrigeracion(String refrigeracion) {
+        this.refrigeracion = refrigeracion;
     }
 
-    public void displaySpecs() {
+    public void mostrarEspecificaciones() {
         System.out.println("=== Especificaciones de la Computadora ===");
-        if (processor != null)
-            System.out.println("Procesador: " + processor);
-        if (memory != null)
-            System.out.println("Memoria: " + memory);
-        if (storage != null)
-            System.out.println("Almacenamiento: " + storage);
-        if (graphicsCard != null)
-            System.out.println("Tarjeta gráfica: " + graphicsCard);
-        if (motherboard != null)
-            System.out.println("Placa madre: " + motherboard);
-        if (powerSupply != null)
-            System.out.println("Fuente: " + powerSupply);
-        if (coolingSystem != null)
-            System.out.println("Refrigeración: " + coolingSystem);
+        if (procesador != null)
+            System.out.println("Procesador: " + procesador);
+        if (memoria != null)
+            System.out.println("Memoria: " + memoria);
+        if (almacenamiento != null)
+            System.out.println("Almacenamiento: " + almacenamiento);
+        if (tarjetaGrafica != null)
+            System.out.println("Tarjeta gráfica: " + tarjetaGrafica);
+        if (placaMadre != null)
+            System.out.println("Placa madre: " + placaMadre);
+        if (fuente != null)
+            System.out.println("Fuente: " + fuente);
+        if (refrigeracion != null)
+            System.out.println("Refrigeración: " + refrigeracion);
         System.out.println();
     }
 }

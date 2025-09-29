@@ -1,31 +1,31 @@
 public class Ejercicio1 {
 
     public static void main(String[] args) {
-        DatabaseConnection conn1 = new DatabaseConnection();
-        DatabaseConnection conn2 = new DatabaseConnection();
-        DatabaseConnection conn3 = new DatabaseConnection();
+        ConexionBaseDatos conexion1 = new ConexionBaseDatos();
+        ConexionBaseDatos conexion2 = new ConexionBaseDatos();
+        ConexionBaseDatos conexion3 = new ConexionBaseDatos();
 
-        System.out.println("Conexión 1: " + conn1.getConnectionId());
-        System.out.println("Conexión 2: " + conn2.getConnectionId());
-        System.out.println("Conexión 3: " + conn3.getConnectionId());
+        System.out.println("Conexión 1: " + conexion1.obtenerIdConexion());
+        System.out.println("Conexión 2: " + conexion2.obtenerIdConexion());
+        System.out.println("Conexión 3: " + conexion3.obtenerIdConexion());
     }
 }
 
-class DatabaseConnection {
-    private static int connectionCount = 0;
-    private int connectionId;
+class ConexionBaseDatos {
+    private static int contadorConexiones = 0;
+    private int idConexion;
 
-    public DatabaseConnection() {
-        connectionCount++;
-        this.connectionId = connectionCount;
-        System.out.println("Nueva conexión a base de datos creada. ID: " + connectionId);
+    public ConexionBaseDatos() {
+        contadorConexiones++;
+        this.idConexion = contadorConexiones;
+        System.out.println("Nueva conexión a base de datos creada. ID: " + idConexion);
     }
 
-    public int getConnectionId() {
-        return connectionId;
+    public int obtenerIdConexion() {
+        return idConexion;
     }
 
-    public void executeQuery(String query) {
-        System.out.println("Ejecutando query en conexión " + connectionId + ": " + query);
+    public void ejecutarConsulta(String consulta) {
+        System.out.println("Ejecutando consulta en conexión " + idConexion + ": " + consulta);
     }
 }
